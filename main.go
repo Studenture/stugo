@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"studenture/ent"
-	elk "studenture/ent/output/http"
+	"studenture/crudGen/ent"
+	entoas "studenture/crudGen/ent/http"
 
 	"github.com/go-chi/chi/v5"
 	_ "github.com/mattn/go-sqlite3"
@@ -29,16 +29,16 @@ func main() {
 	r, l := chi.NewRouter(), zap.NewExample()
 	// Create the pet handler.
 	r.Route("/users", func(r chi.Router) {
-		elk.NewProfileHandler(c, l).MountRoutes(r)
+
 	})
 	r.Route("/posts", func(r chi.Router) {
-		elk.NewPostHandler(c, l).MountRoutes(r)
+		entoas.NewPostHandler(c, l).MountRoutes(r)
 	})
 	r.Route("/auth", func(r chi.Router) {
-		elk.NewAuthHandler(c, l).MountRoutes(r)
+		entoas.NewAuthHandler(c, l).MountRoutes(r)
 	})
 	r.Route("/tags", func(r chi.Router) {
-		elk.NewTagHandler(c, l).MountRoutes(r)
+		entoas.NewTagHandler(c, l).MountRoutes(r)
 	})
 	// Start listen to incoming requests.
 	fmt.Println("Server running")

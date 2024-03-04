@@ -1,10 +1,10 @@
 package schema
 
 import (
+	"entgo.io/contrib/entoas"
 	"entgo.io/ent"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	"github.com/masseelch/elk"
 )
 
 // Tag holds the schema definition for the Tag entity.
@@ -25,6 +25,6 @@ func (Tag) Fields() []ent.Field {
 func (Tag) Edges() []ent.Edge {
 	return []ent.Edge{
 		edge.To("posts", Post.Type).
-			Annotations(elk.Groups("user")),
+			Annotations(entoas.Groups("user")),
 	}
 }

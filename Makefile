@@ -9,7 +9,7 @@ dev:
 	$(GO) run $(filter-out %_test.go,$(wildcard *.go))
 
 gen:
-	cd ent && rm -rf output && $(GO) generate ./... && cd ..
+	cd crudGen && rm -rf ent && $(GO) generate ./... && cd ..
 
 test:
 	$(GO) test -v ./...
