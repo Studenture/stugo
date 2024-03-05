@@ -1,0 +1,1930 @@
+{
+  "info": {
+    "title": "Ent Schema API",
+    "description": "This is an auto generated API description made out of an Ent schema definition",
+    "termsOfService": "",
+    "contact": {},
+    "license": {
+      "name": ""
+    },
+    "version": "0.0.0"
+  },
+  "paths": {
+    "/auths": {
+      "get": {
+        "summary": "List Auths",
+        "description": "List Auths.",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "listAuth",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Auth list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Auth4091576228View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Auth",
+        "description": "Creates a new Auth and persists it to storage.",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "createAuth",
+        "requestBody": {
+          "description": "Auth to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password_hash",
+                  "profile"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password_hash": {
+                    "type": "string"
+                  },
+                  "profile": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Auth created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth4091576228View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/auths/{id}": {
+      "get": {
+        "summary": "Find a Auth by ID",
+        "description": "Finds the Auth with the requested ID and returns it.",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "readAuth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Auth",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Auth with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth4091576228View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a Auth by ID",
+        "description": "Deletes the Auth with the requested ID.",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "deleteAuth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Auth to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Auth with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a Auth",
+        "description": "Updates a Auth and persists changes to storage.",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "updateAuth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Auth to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Auth properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password_hash",
+                  "profile"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password_hash": {
+                    "type": "string"
+                  },
+                  "profile": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Auth updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth4091576228View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/auths/{id}/profile": {
+      "get": {
+        "summary": "Find the attached Profile",
+        "description": "Find the attached Profile of the Auth with the given ID",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "readAuthProfile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Auth",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile attached to Auth with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile442089671View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "summary": "List Posts",
+        "description": "List Posts.",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "listPost",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Post list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post14154960View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Post",
+        "description": "Creates a new Post and persists it to storage.",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "createPost",
+        "requestBody": {
+          "description": "Post to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "apply_url",
+                  "content",
+                  "created_at",
+                  "created_by",
+                  "status",
+                  "title"
+                ],
+                "properties": {
+                  "apply_url": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "estimate_salary": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "published"
+                  },
+                  "subHead": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Post created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post14154960View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/{id}": {
+      "get": {
+        "summary": "Find a Post by ID",
+        "description": "Finds the Post with the requested ID and returns it.",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "readPost",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post14154960View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a Post by ID",
+        "description": "Deletes the Post with the requested ID.",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "deletePost",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Post to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Post with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a Post",
+        "description": "Updates a Post and persists changes to storage.",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "updatePost",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Post to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Post properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "apply_url",
+                  "content",
+                  "created_at",
+                  "created_by",
+                  "status",
+                  "title"
+                ],
+                "properties": {
+                  "apply_url": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "estimate_salary": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "published"
+                  },
+                  "subHead": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Post updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post14154960View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/{id}/author": {
+      "get": {
+        "summary": "Find the attached Profile",
+        "description": "Find the attached Profile of the Post with the given ID",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "readPostAuthor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile attached to Post with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile442089671View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/posts/{id}/tags": {
+      "get": {
+        "summary": "Find the attached Tags",
+        "description": "Find the attached Tags of the Post with the given ID",
+        "tags": [
+          "Post"
+        ],
+        "operationId": "listPostTags",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Post",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tags attached to Post with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tag3713229237View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/profiles": {
+      "get": {
+        "summary": "List Profiles",
+        "description": "List Profiles.",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "listProfile",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Profile list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profile2485805610View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Profile",
+        "description": "Creates a new Profile and persists it to storage.",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "createProfile",
+        "requestBody": {
+          "description": "Profile to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "auth_link",
+                  "created_at",
+                  "description",
+                  "logo",
+                  "name",
+                  "type",
+                  "website"
+                ],
+                "properties": {
+                  "auth": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "auth_link": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "logo": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "posts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "user"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "website": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile2485805610View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/profiles/{id}": {
+      "get": {
+        "summary": "Find a Profile by ID",
+        "description": "Finds the Profile with the requested ID and returns it.",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "readProfile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile442089671View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a Profile by ID",
+        "description": "Deletes the Profile with the requested ID.",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "deleteProfile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Profile to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Profile with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a Profile",
+        "description": "Updates a Profile and persists changes to storage.",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "updateProfile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Profile to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Profile properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "auth_link",
+                  "created_at",
+                  "description",
+                  "logo",
+                  "name",
+                  "type",
+                  "website"
+                ],
+                "properties": {
+                  "auth": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "auth_link": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "logo": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "posts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "user"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "website": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile2485805610View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/profiles/{id}/auth": {
+      "get": {
+        "summary": "Find the attached Auths",
+        "description": "Find the attached Auths of the Profile with the given ID",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "listProfileAuth",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Auths attached to Profile with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Auth4091576228View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/profiles/{id}/posts": {
+      "get": {
+        "summary": "Find the attached Posts",
+        "description": "Find the attached Posts of the Profile with the given ID",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "listProfilePosts",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Profile",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Posts attached to Profile with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post14154960View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "summary": "List Tags",
+        "description": "List Tags.",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "listTag",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result Tag list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tag3713229237View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Tag",
+        "description": "Creates a new Tag and persists it to storage.",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "createTag",
+        "requestBody": {
+          "description": "Tag to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "posts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "userFlair"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tag created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag3713229237View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/tags/{id}": {
+      "get": {
+        "summary": "Find a Tag by ID",
+        "description": "Finds the Tag with the requested ID and returns it.",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "readTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tag with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag3713229237View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a Tag by ID",
+        "description": "Deletes the Tag with the requested ID.",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "deleteTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tag with requested ID was deleted"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates a Tag",
+        "description": "Updates a Tag and persists changes to storage.",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "updateTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Tag properties to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "posts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "userFlair"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tag updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag3713229237View"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/tags/{id}/posts": {
+      "get": {
+        "summary": "Find the attached Posts",
+        "description": "Find the attached Posts of the Tag with the given ID",
+        "tags": [
+          "Tag"
+        ],
+        "operationId": "listTagPosts",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "what page to render",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "item count to render per page",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Posts attached to Tag with requested ID was found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Post14154960View"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth4091576228View": {
+        "type": "object",
+        "required": [
+          "email",
+          "id",
+          "password_hash"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "password_hash": {
+            "type": "string"
+          }
+        }
+      },
+      "Post14154960View": {
+        "type": "object",
+        "required": [
+          "apply_url",
+          "content",
+          "created_at",
+          "created_by",
+          "id",
+          "status",
+          "title"
+        ],
+        "properties": {
+          "apply_url": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "estimate_salary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "example": "published"
+          },
+          "subHead": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Post3402657615View": {
+        "type": "object",
+        "required": [
+          "apply_url",
+          "content",
+          "created_at",
+          "created_by",
+          "id",
+          "status",
+          "title"
+        ],
+        "properties": {
+          "apply_url": {
+            "type": "string"
+          },
+          "author": {
+            "$ref": "#/components/schemas/Profile2485805610View"
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "estimate_salary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "example": "published"
+          },
+          "subHead": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag3713229237View"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Profile2485805610View": {
+        "type": "object",
+        "required": [
+          "auth_link",
+          "created_at",
+          "description",
+          "id",
+          "logo",
+          "name",
+          "type",
+          "website"
+        ],
+        "properties": {
+          "auth_link": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "example": "user"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "website": {
+            "type": "string"
+          }
+        }
+      },
+      "Profile442089671View": {
+        "type": "object",
+        "required": [
+          "auth_link",
+          "created_at",
+          "description",
+          "id",
+          "logo",
+          "name",
+          "type",
+          "website"
+        ],
+        "properties": {
+          "auth_link": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post14154960View"
+            }
+          },
+          "type": {
+            "type": "string",
+            "example": "user"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "website": {
+            "type": "string"
+          }
+        }
+      },
+      "Tag1648032904View": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post14154960View"
+            }
+          },
+          "type": {
+            "type": "string",
+            "example": "userFlair"
+          }
+        }
+      },
+      "Tag3713229237View": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "example": "userFlair"
+          }
+        }
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "invalid input, data invalid",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 400
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Bad Request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "user misses permission",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 403
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Forbidden"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 404
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Not Found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "conflicting resources",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 409
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Conflict"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "unexpected error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 500
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {}
+  },
+  "openapi": "3.0.3"
+}

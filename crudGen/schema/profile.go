@@ -1,11 +1,11 @@
 package schema
 
 import (
-	"entgo.io/contrib/entoas"
 	"entgo.io/ent"
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
+	"github.com/masseelch/elk"
 )
 
 // Profile holds the schema definition for the Profile entity.
@@ -32,7 +32,7 @@ func (Profile) Fields() []ent.Field {
 func (Profile) Edges() []ent.Edge {
 	return []ent.Edge{
 		edge.To("posts", Post.Type).
-			Annotations(entoas.Groups("user")),
+			Annotations(elk.Groups("user")),
 		edge.To("auth", Auth.Type),
 	}
 }
@@ -40,7 +40,7 @@ func (Profile) Edges() []ent.Edge {
 // Annotations of the Profile.
 func (Profile) Annotations() []schema.Annotation {
 	return []schema.Annotation{
-		// entoas.ReadGroups("user"),
-		entoas.Groups("user"),
+		elk.ReadGroups("user"),
+		// elk.Groups("user"),
 	}
 }

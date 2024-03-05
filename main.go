@@ -27,19 +27,25 @@ func main() {
 	}
 	// Router and Logger.
 	r, l := chi.NewRouter(), zap.NewExample()
-	// Create the pet handler.
-	r.Route("/users", func(r chi.Router) {
 
+	r.Get("/openapi", func(w http.ResponseWriter, r *http.Request) {
+		http.FileServer(http.Dir("./crudGen/openapi.json")).ServeHTTP(w, r)
 	})
-	r.Route("/posts", func(r chi.Router) {
-		entoas.NewPostHandler(c, l).MountRoutes(r)
+
+	//return hello world at /
+	r.Get("/ss", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, world!"))
 	})
-	r.Route("/auth", func(r chi.Router) {
-		entoas.NewAuthHandler(c, l).MountRoutes(r)
+	entoas.NewPostHandler(c, l).MountRoutes(r)
+	entoas.NewProfileHandler(c, l).MountRoutes(r)
+	//TODO: authn routes
+	entoas.NewAuthHandler(c, l).MountRoutes(r)
+	entoas.NewTagHandler(c, l).MountRoutes(r)
+	//expose swagger ui based on openapi.json
+	r.Get("/swagger/*", func(w http.ResponseWriter, r *http.Request) {
+		http.FileServer(http.Dir("./swagger-ui")).ServeHTTP(w, r)
 	})
-	r.Route("/tags", func(r chi.Router) {
-		entoas.NewTagHandler(c, l).MountRoutes(r)
-	})
+
 	// Start listen to incoming requests.
 	fmt.Println("Server running")
 	defer fmt.Println("Server stopped")

@@ -1,11 +1,11 @@
 package schema
 
 import (
-	"entgo.io/contrib/entoas"
 	"entgo.io/ent"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"github.com/google/uuid"
+	"github.com/masseelch/elk"
 )
 
 // Job Post holds the schema definition for the Post entity.
@@ -47,8 +47,8 @@ func (Post) Edges() []ent.Edge {
 		edge.From("author", Profile.Type).
 			Ref("posts").
 			Unique().
-			Annotations(entoas.Groups("user")),
+			Annotations(elk.Groups("user")),
 		edge.To("tags", Tag.Type).
-			Annotations(entoas.Groups("user")),
+			Annotations(elk.Groups("user")),
 	}
 }
